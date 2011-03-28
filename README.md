@@ -14,11 +14,11 @@ You need to choose a container div which will get appended two links, one for ad
 
 ### Settings
     
-    * `add_link:` The text for the Add more link.
-    * `remove_link:` The text for the remove more link.
-    * `base_element:` The element you want to clone and be the base/model for the new ones.
-    * `insert_after:` Where you want to put the div containing the add/remove links.
-    * `get_length:`  The selector that you want to use as a counter.
+* `add_link:` The text for the Add more link.
+* `remove_link:` The text for the remove more link.
+* `base_element:` The element you want to clone and be the base/model for the new ones.
+* `insert_after:` Where you want to put the div containing the add/remove links.
+* `get_length:`  The selector that you want to use as a counter.
 
 ## TODO
 
