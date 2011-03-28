@@ -1,3 +1,13 @@
+/*
+ * jQuery.Klonen version 0.1 - An easy way to clone nested_forms elements.
+ * http://github.com/danroux/klonen
+ *
+ * Copyright (c) 2011 Daniel Roux
+*
+ * Licensed under the MIT:
+ *   http://www.opensource.org/licenses/mit-license.php
+ */
+
 (function($){
     $.fn.klonen = function(options){
         var settings = {
