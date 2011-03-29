@@ -14,7 +14,8 @@
             add_link: "Add more",
             remove_link: "Remove",
             insert_after: "",
-            get_length:    0
+            get_length:    0,
+            toRemove: options.toRemove.push(["input[id$=destroy]", "label[for$=destroy]", "input[id$=upload_attributes_id]"])
         }
 
         if ( options ) { 
@@ -35,10 +36,7 @@
         function setAddLink(){
             addLink = $('<a href="#" >' + settings.add_link + '</a>');
             addLink.click(function(){
-                newElement = $(baseElement).clone();
-                plusLength(newElement);
-                bindCallbacks(newElement);
-                newElement.insertAfter(settings.insert_after);
+                createNewElement();
                 return false;
             });
             return addLink;
@@ -52,10 +50,25 @@
             });
             return link;
         }
-        
+
+        function createNewElement(){
+            newElement = $(baseElement).clone();
+            clearElement(newElement);
+            plusLength(newElement);
+            bindCallbacks(newElement);
+            newElement.insertAfter(settings.insert_after);
+        }
+
+        function clearElement(newElement){
+            newElement.find('input[type=text], select, textarea').val('');
+            newElement.find("input[type=checkbox], input[type=radio]").attr("checked", false);
+            newElement.find(settings.toRemove.join(',')).remove();
+            return newElement;
+        }
+
         function plusLength(newElement){
             var length = $(settings.get_length).length;
-            $(newElement).find('li, label, input, select').each(function(){
+            $(newElement).find('li, label, input, select, textarea').each(function(){
                 var attributes = ["id"];
                 var that = $(this);
                 var tagName = this.tagName.toLowerCase();
@@ -71,6 +84,7 @@
                     attributes.push("name");
                     break;
                 }
+
                 $.each(attributes, function(index, value){
                     var attr = $(that).attr(value);
                     $(that).attr(value, attr.replace(/\d/, length));
