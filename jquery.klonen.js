@@ -1,5 +1,5 @@
 /*
- * jQuery.Klonen version 0.1 - An easy way to clone nested_forms elements.
+ * jQuery.Klonen version 0.1.1 - An easy way to clone nested_forms elements.
  * http://github.com/danroux/klonen
  *
  * Copyright (c) 2011 Daniel Roux
@@ -11,11 +11,11 @@
 (function($){
     $.fn.klonen = function(options, callback){
         var settings = {
-            add_link: "Add more",
-            remove_link: "Remove",
-            insert_after: "",
-            get_length:    0,
-            toRemove: options.toRemove.push(["input[id$=destroy]", "label[for$=destroy]", "input[id$=upload_attributes_id]"])
+            addLink: "Add more",
+            removeLink: "Remove",
+            insertAfter: "",
+            getLength:    0,
+            toRemove: options.toRemove.push(["input[id$=destroy]", "label[for$=destroy]"])
         }
 
         if ( options ) { 
@@ -34,7 +34,7 @@
         }();
 
         function setAddLink(){
-            addLink = $('<a href="#" >' + settings.add_link + '</a>');
+            addLink = $('<a href="#" id="klonen_add">' + settings.addLink + '</a>');
             addLink.click(function(){
                 createNewElement();
                 return false;
@@ -43,9 +43,9 @@
         }
 
         function setRemoveLink(){
-            var link = $('<a href="">' + settings.remove_link + '</a>');
+            var link = $('<a href="" id="klonen_remove">' + settings.removeLink + '</a>');
             link.click(function(){
-                baseElement.children(settings.get_length + ':not(:first):last').remove();
+                baseElement.children(settings.getLength + ':not(:first):last').remove();
                 return false;
             });
             return link;
@@ -56,7 +56,7 @@
             clearElement(newElement);
             plusLength(newElement);
             bindCallbacks(newElement);
-            newElement.insertAfter(settings.insert_after);
+            newElement.insertAfter(settings.insertAfter);
         }
 
         function clearElement(newElement){
@@ -67,7 +67,7 @@
         }
 
         function plusLength(newElement){
-            var length = $(settings.get_length).length;
+            var length = $(settings.getLength).length;
             $(newElement).find('li, label, input, select, textarea').each(function(){
                 var attributes = ["id"];
                 var that = $(this);

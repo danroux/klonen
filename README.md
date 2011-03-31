@@ -7,19 +7,20 @@ If you need to add dynamically more elements to a nested_forms with Rails you mi
 
 ## Usage
 
-You only have to choose the element that you want to clone and pass an settings parameter.
+You only have to choose the element that you want to clone and pass a settings parameter.
 
     $("#element-to-clone").klonen({});
 
 ### Settings
     
-* `add_link:` The text for the Add more link.
-* `remove_link:` The text for the remove more link.
-* `insert_after:` Where you want to put the div containing the add/remove links.
-* `get_length:`  The selector that you want to use as a counter.
+* `addLink:` The text for the Add more link.
+* `removeLink:` The text for the remove more link.
+* `insertAfter:` Where you want to put the div containing the add/remove links.
+* `getLength:`  The selector that you want to use as a counter.
 * `toRemove:`    Elements you want to remove from the cloned element.
 
 ## TODO
 
+* Generate dynamic ids for the links.
 * To make `<img>` links.
 * Fix the error on loading.
